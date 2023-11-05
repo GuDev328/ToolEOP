@@ -27,7 +27,6 @@ setInterval(() => {
             if (nextElement) {
                 await callApi(nextElement);
             } else {
-                // Khi tất cả các cuộc gọi đã hoàn thành, resolve Promise
                 resolve();
             }
         
