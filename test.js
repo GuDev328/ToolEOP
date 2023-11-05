@@ -8,7 +8,6 @@ setInterval(() => {
     }
 
     async function callApi(link) {
-        try {
             const response = await fetch("http://localhost:3285/", {
                 method: "POST",
                 headers: {
@@ -31,14 +30,10 @@ setInterval(() => {
                 // Khi tất cả các cuộc gọi đã hoàn thành, resolve Promise
                 resolve();
             }
-        } catch (error) {
-            console.error("Lỗi:", error);
-            // Khi có lỗi, reject Promise
-            // reject(error);
-        }
+        
     }
 
-    function getNextInputElement() {
+    const getNextInputElement = () => {
         i++;
         if (i >= inputElements.length - 4) {
             btn[1].click();
@@ -54,10 +49,9 @@ setInterval(() => {
     let links = [];
     let result = [];
 
-    function startAsyncProcess() {
+    const startAsyncProcess = () => {
         return new Promise(async (resolve, reject) => {
             inputElements.forEach((e) => {
-                try {
                     const BackgroundImage =
                         getComputedStyle(e).getPropertyValue(
                             "background-image"
@@ -66,27 +60,19 @@ setInterval(() => {
                     if (match) {
                         let link = match[1];
                         links.push(link);
-                    }
-                } catch (error) {}
+                    }                
             });
 
-            try {
                 await callApi(links[0]);
                 resolve();
-            } catch (error) {
-                reject(error);
-            }
         });
     }
 
     setTimeout(() => {
         startAsyncProcess()
-            .then(() => {
-                // Khi tất cả đã hoàn thành, thực hiện btn[0].click()
+            .then(() => {                
                 btn[0].click();
             })
-            .catch((error) => {
-                console.error("Lỗi trong quá trình xử lý bất đồng bộ:", error);
-            });
-    }, 500);
+            
+    }, 1500);
 }, 65000);
