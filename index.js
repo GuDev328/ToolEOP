@@ -39,6 +39,10 @@ app.post("/", (req, res) => {
     }
 });
 
+app.post("hey", (req, res) => {
+    return res.send("Ready");
+});
+
 app.listen(3285, () => {
     console.log(`Port 3285`);
 });
