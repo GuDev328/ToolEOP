@@ -88,5 +88,5 @@ setInterval(() => {
             .catch((error) => {
                 console.error("Lỗi trong quá trình xử lý bất đồng bộ:", error);
             });
-    }, 500);
+    }, 1500);
 }, 65000);
