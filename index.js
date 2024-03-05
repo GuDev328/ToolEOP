@@ -39,7 +39,7 @@ app.post("/", (req, res) => {
     }
 });
 
-app.post("hey", (req, res) => {
+app.get("/hey", (req, res) => {
     return res.send("Ready");
 });
 
