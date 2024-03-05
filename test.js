@@ -9,7 +9,7 @@ setInterval(() => {
 
     async function callApi(link) {
         try {
-            const response = await fetch("http://localhost:3285/", {
+            const response = await fetch("https://fashion-flavor-fully-framework.trycloudflare.com/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
